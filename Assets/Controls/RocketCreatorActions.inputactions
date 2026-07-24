@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "RocketCreatorActions",
+    "maps": [
+        {
+            "name": "Drag and Drop",
+            "id": "dd31625a-15e5-4477-ae46-11aca0a002f4",
+            "actions": [
+                {
+                    "name": "pickUp",
+                    "type": "Button",
+                    "id": "7fcc786a-42bb-4984-9c62-ff8691b4c3cb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "840b72e1-a1b5-46da-a87c-db0ee2f62e68",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "pickUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

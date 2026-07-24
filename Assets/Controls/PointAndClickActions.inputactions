@@ -1,13 +1,13 @@
 {
     "version": 1,
-    "name": "RocketCreatorActions",
+    "name": "PointAndClickActions",
     "maps": [
         {
-            "name": "Drag and Drop",
+            "name": "Click And Point",
             "id": "dd31625a-15e5-4477-ae46-11aca0a002f4",
             "actions": [
                 {
-                    "name": "pickUp",
+                    "name": "left click",
                     "type": "Button",
                     "id": "7fcc786a-42bb-4984-9c62-ff8691b4c3cb",
                     "expectedControlType": "",
@@ -24,7 +24,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "pickUp",
+                    "action": "left click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

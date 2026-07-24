@@ -3,19 +3,19 @@ using UnityEngine.InputSystem;
 
 public class DragNDrop : MonoBehaviour
 {
-    RocketCreatorActions actions;
+    PointAndClickActions actions;
     InputAction pickUp;
     Collider2D col;
-    bool held = false;
+    public bool held = false;
 
     private void Awake()
     {
-        actions = new RocketCreatorActions();
+        actions = new PointAndClickActions();
     }
 
     private void OnEnable()
     {
-        pickUp = actions.DragandDrop.pickUp;
+        pickUp = actions.ClickAndPoint.leftclick;
         pickUp.Enable();
     }
 
@@ -36,8 +36,9 @@ public class DragNDrop : MonoBehaviour
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
         if (pickUp.WasPressedThisFrame())
-        {
-            if (col.bounds.Contains(mouseWorldPos))
+        { 
+            // you have to input the vector 3 explicitly because if the z value is off bounds.contains wont register the click
+            if (col.bounds.Contains(new Vector3(mouseWorldPos.x, mouseWorldPos.y, col.bounds.center.z)))
             {
                 held = true;
                 Debug.Log("ive been clicked");
@@ -45,7 +46,7 @@ public class DragNDrop : MonoBehaviour
         }
         if (held)
         {
-            transform.position = mouseWorldPos;
+            transform.position = new Vector3 (mouseWorldPos.x,mouseWorldPos.y, transform.position.z);
         }
         if (pickUp.WasReleasedThisFrame())
         {

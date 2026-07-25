@@ -1593,16 +1593,12 @@ PrefabInstance:
       value: Backpack
       objectReference: {fileID: 0}
     - target: {fileID: 6677198282644342528, guid: 4c4343e1fdbd3cb4cb47c13a271ed872, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6677198282644342528, guid: 4c4343e1fdbd3cb4cb47c13a271ed872, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.82
       objectReference: {fileID: 0}
     - target: {fileID: 6677198282644342528, guid: 4c4343e1fdbd3cb4cb47c13a271ed872, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.92
+      value: -3.17
       objectReference: {fileID: 0}
     - target: {fileID: 6677198282644342528, guid: 4c4343e1fdbd3cb4cb47c13a271ed872, type: 3}
       propertyPath: m_LocalPosition.z

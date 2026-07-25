@@ -12,20 +12,21 @@ public class DisplayTime : MonoBehaviour
     {
         gameManager = GameObject.FindAnyObjectByType<GameManager>();
         if (gameManager == null) Debug.Log("no game manager found");
+        else Debug.Log("Game manager found! i sure hope it doesn't get deleted");
         tmp = GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.timer > 0)
+        if (GameManager.timer > 0)
         {
-            tmp.text = Mathf.Ceil(gameManager.timer).ToString();
+            tmp.text = Mathf.Ceil(GameManager.timer).ToString();
         }
         else
         {
             tmp.text = "0";
         }
-        if (gameManager.launched) gameObject.SetActive(false);
+        if (GameManager.launched) gameObject.SetActive(false);
     }
 }

@@ -1,13 +1,22 @@
 fileFormatVersion: 2
-guid: db3b2e989750fb748b35ccbafec885ce
+guid: 03b3db50fb6447f48b37230754a95fb6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4978609872214290269
-    second: spudnik_baking_soda_vinegar_0
+      213: 5598014166797920941
+    second: clouds-10_0
   - first:
-      213: 4147663950076536829
-    second: spudnik_baking_soda_vinegar_1
+      213: -219642503350402403
+    second: clouds-10_1
+  - first:
+      213: -1052569972349081441
+    second: clouds-10_2
+  - first:
+      213: -3500514172279447879
+    second: clouds-10_3
+  - first:
+      213: -7899312397488276933
+    second: clouds-10_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spudnik_baking_soda_vinegar_0
+      name: clouds-10_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 162
-        height: 364
+        x: 11
+        y: 10
+        width: 45
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +127,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3a01a63f2bc68eab0800000000000000
-      internalID: -4978609872214290269
+      spriteID: daa2893a93420bd40800000000000000
+      internalID: 5598014166797920941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spudnik_baking_soda_vinegar_1
+      name: clouds-10_1
       rect:
         serializedVersion: 2
-        x: 166
-        y: 23
-        width: 147
-        height: 199
+        x: 52
+        y: 8
+        width: 239
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +149,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df7610823667f8930800000000000000
-      internalID: 4147663950076536829
+      spriteID: d92c8329e4ca3fcf0800000000000000
+      internalID: -219642503350402403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clouds-10_2
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 42
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f98e3e8df258461f0800000000000000
+      internalID: -1052569972349081441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clouds-10_3
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 22
+        width: 22
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9be101628ecab6fc0800000000000000
+      internalID: -3500514172279447879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clouds-10_4
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 10
+        width: 16
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3a3fd11a31006290800000000000000
+      internalID: -7899312397488276933
       vertices: []
       indices: 
       edges: []
@@ -160,8 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      spudnik_baking_soda_vinegar_0: -4978609872214290269
-      spudnik_baking_soda_vinegar_1: 4147663950076536829
+      clouds-10_0: 5598014166797920941
+      clouds-10_1: -219642503350402403
+      clouds-10_2: -1052569972349081441
+      clouds-10_3: -3500514172279447879
+      clouds-10_4: -7899312397488276933
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

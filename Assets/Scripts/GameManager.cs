@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject rocket;
 
-    GameObject potato;
+    Potato potato;
     public float highestY;
 
     public float timer = 10;
@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public bool launched = false;
 
     private static GameManager instance;
+
+    float lossTimer;
+    public float timeToLose = 4;
 
     private void Awake()
     {
@@ -57,7 +60,11 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        potato = GameObject.FindFirstObjectByType<Potato>().gameObject;
+        potato = GameObject.FindFirstObjectByType<Potato>();
+        {
+            Debug.Log("there aint no potatoes here");
+        }
+        lossTimer = timeToLose;
     }
 
     // Update is called once per frame
@@ -71,7 +78,7 @@ public class GameManager : MonoBehaviour
         }
         if (rocket != null)
         {
-            Debug.Log("Starting Timer");
+            //Debug.Log("Starting Timer");
             timer -= Time.deltaTime;
             if (timer < 0) Launch();
         }
@@ -93,10 +100,13 @@ public class GameManager : MonoBehaviour
         }
 
         //track potato height
-        if (potato.transform.position.y > highestY)
+        if (potato != null && potato.transform.position.y > highestY)
         {
             highestY = potato.transform.position.y;
         }
+
+        //track time to lose
+        if (launched) lossTimer -= Time.deltaTime;
     }
 
     public void Launch()
@@ -128,6 +138,30 @@ public class GameManager : MonoBehaviour
     {
         int scene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(scene + 1);
+    }
+
+    public static void LoadGatherScene()
+    {
+        //Scene gatherScene = SceneManager.GetSceneByName("Gathering");
+        SceneManager.LoadScene(0);
+    }
+    
+    public static void LoadTitleScene()
+    {
+        //Scene titleScene = SceneManager.GetSceneByName("Title Screen");
+        SceneManager.LoadScene(3);
+    }
+
+    public static void LoadCreditsScene()
+    {
+        //Scene creditsScene = SceneManager.GetSceneByName("Credits");
+        SceneManager.LoadScene(2);
+    }
+
+    public static void LoadRocketScene()
+    {
+        //Scene rocketScene = SceneManager.GetSceneByName("Rocket Builder");
+        SceneManager.LoadScene(1);
     }
 
 }

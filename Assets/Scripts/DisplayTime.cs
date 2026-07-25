@@ -22,5 +22,10 @@ public class DisplayTime : MonoBehaviour
         {
             tmp.text = Mathf.Ceil(gameManager.timer).ToString();
         }
+        else
+        {
+            tmp.text = "0";
+        }
+        if (gameManager.launched) gameObject.SetActive(false);
     }
 }

@@ -1,26 +1,63 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
-    GameObject rocket;
+    public GameObject rocket;
+
+    GameObject potato;
+    public float highestY;
 
     public float timer = 10;
 
     Vector2 mouseScreenPos;
     Vector2 mouseWorldPos;
 
+    public bool launched = false;
 
+    private static GameManager instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("looking for rocket");
+        rocket = GameObject.Find("Rocket");   
+        if (rocket == null)
+        {
+            Debug.Log("Rocket Not Found");
+        }
+        highestY = 0;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rocket = GameObject.Find("Rocket");   
-        if ( rocket == null)
-        {
-            Debug.Log("Rocket Not Found");
-        }
+        potato = GameObject.FindFirstObjectByType<Potato>().gameObject;
     }
 
     // Update is called once per frame
@@ -28,9 +65,14 @@ public class GameManager : MonoBehaviour
     {
 
         //countdown to launch
-        timer -= Time.deltaTime;
+        if (rocket == null)
+        {
+            rocket = GameObject.Find("Rocket");
+        }
         if (rocket != null)
         {
+            Debug.Log("Starting Timer");
+            timer -= Time.deltaTime;
             if (timer < 0) Launch();
         }
         
@@ -49,19 +91,43 @@ public class GameManager : MonoBehaviour
         {
             Cursor.SetCursor(null, new Vector2(16, 16), CursorMode.Auto);
         }
+
+        //track potato height
+        if (potato.transform.position.y > highestY)
+        {
+            highestY = potato.transform.position.y;
+        }
     }
 
     public void Launch()
     {
         Rigidbody2D[] children = rocket.GetComponentsInChildren<Rigidbody2D>();
         Propulsion[] propulsyThingies = GameObject.FindObjectsByType<Propulsion>(FindObjectsSortMode.None);
+        DragNDrop[] dragNDrops = GameObject.FindObjectsByType<DragNDrop>(FindObjectsSortMode.None);
         foreach (Propulsion propulsyThingy in propulsyThingies)
         {
-            propulsyThingy.Launch();
+            if (propulsyThingy.transform.parent.gameObject.name == "Rocket")
+            {
+                propulsyThingy.Launch();
+            }
         }
         foreach (Rigidbody2D rb in children)
         {
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
+        foreach (DragNDrop dragyThingy in dragNDrops)
+        {
+            dragyThingy.enabled = false;
+        }
+        PotatoTracker potatoTracker = GameObject.FindAnyObjectByType<PotatoTracker>();
+        potatoTracker.Launch();
+        launched = true;
     }
+
+    public void NextScene()
+    {
+        int scene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(scene + 1);
+    }
+
 }

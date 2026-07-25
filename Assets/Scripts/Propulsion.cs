@@ -29,7 +29,7 @@ public class Propulsion : MonoBehaviour
         {
             Vector2 upDir = upReference.transform.position - rb.transform.position;
             rb.AddForce(upDir * 10);
-            Debug.Log(timer);
+            //Debug.Log(timer);
         }
         timer -= Time.deltaTime;
     }

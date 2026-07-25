@@ -6,6 +6,7 @@ public class InventoryItem : MonoBehaviour
     GameObject backPack;
     DragNDrop dragNDrop;
     Transform parent;
+    GameManager gameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -13,6 +14,7 @@ public class InventoryItem : MonoBehaviour
         backPack = GameObject.Find("Backpack");
         dragNDrop = GetComponent<DragNDrop>();
         parent = transform.parent;
+        gameManager = GameObject.FindFirstObjectByType<GameManager>();
     }
 
     // Update is called once per frame
@@ -26,8 +28,15 @@ public class InventoryItem : MonoBehaviour
             }
             else
             {
-                transform.SetParent(parent.transform);
-                transform.position = new Vector3(parent.transform.position.x, parent.transform.position.y, transform.position.z);
+                if (gameManager.rocket == null)
+                {
+                    transform.SetParent(parent.transform);
+                    transform.position = new Vector3(parent.transform.position.x, parent.transform.position.y, transform.position.z);
+                }
+                else
+                {
+                    transform.SetParent(gameManager.rocket.transform);
+                }
             }
         }
     }

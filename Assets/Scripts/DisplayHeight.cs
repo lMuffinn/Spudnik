@@ -12,8 +12,8 @@ public class DisplayHeight : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.FindFirstObjectByType<GameManager>();
-        if (gameManager == null) Debug.Log("no gamemanager found");
-        else Debug.Log("game manager found, plz don't dissappear");
+        //if (gameManager == null) Debug.Log("no gamemanager found");
+        //else Debug.Log("game manager found, plz don't dissappear");
         tmpgui = GetComponent<TextMeshProUGUI>();
         rectTransform = GetComponent<RectTransform>();
     }

@@ -11,8 +11,8 @@ public class DisplayTime : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.FindAnyObjectByType<GameManager>();
-        if (gameManager == null) Debug.Log("no game manager found");
-        else Debug.Log("Game manager found! i sure hope it doesn't get deleted");
+        //if (gameManager == null) Debug.Log("no game manager found");
+        //else Debug.Log("Game manager found! i sure hope it doesn't get deleted");
         tmp = GetComponent<TextMeshProUGUI>();
     }
 

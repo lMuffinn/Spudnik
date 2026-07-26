@@ -24,18 +24,19 @@ public class GameManager : MonoBehaviour
     float lossTimer;
     public float timeToLose = 4;
 
+    public Texture2D closedHand;
 
     private void Awake()
     {
         if (instance == null)
         {
-            Debug.Log("no gamemanager exists yet, that gets to be me!");
+            //Debug.Log("no gamemanager exists yet, that gets to be me!");
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Debug.Log("Theres already a gamemanager, goodbye cruel world :(");
+            //Debug.Log("Theres already a gamemanager, goodbye cruel world :(");
             Destroy(gameObject);
         }
     }
@@ -66,7 +67,7 @@ public class GameManager : MonoBehaviour
     {
         potato = GameObject.FindFirstObjectByType<Potato>();
         {
-            Debug.Log("there aint no potatoes here");
+            //Debug.Log("there aint no potatoes here");
         }
         lossTimer = timeToLose;
     }
@@ -86,7 +87,7 @@ public class GameManager : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer < 0 && !launched) Launch();
         }
-        
+
         //setting cursor to default when not hovering over anything
         mouseScreenPos = Mouse.current.position.ReadValue();
         mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
@@ -97,6 +98,20 @@ public class GameManager : MonoBehaviour
         {
             if (!area.gameObject.activeInHierarchy) continue; //edge case, don't check them if they are not active
             if (area.gameObject.GetComponent<Collider2D>().bounds.Contains(mouseWorldPos)) cursorbeingused = true;
+        }
+
+        //set cursor to grab if an object is being held
+        //yes i know this is probably not a great way to do it but im so tired okay
+        DragNDrop[] dragNDrops = GameObject.FindObjectsByType<DragNDrop>(FindObjectsSortMode.None);
+        foreach (DragNDrop drop in dragNDrops)
+        {
+            if (!drop.gameObject.activeInHierarchy) continue;
+            if (drop.held)
+            {
+                Debug.Log("something is being grabbed");
+                cursorbeingused = true;
+                Cursor.SetCursor(closedHand, new Vector2(16, 16), CursorMode.Auto); break;
+            }
         }
         if (!cursorbeingused)
         {
@@ -146,6 +161,17 @@ public class GameManager : MonoBehaviour
         foreach (Rigidbody2D rb in children)
         {
             rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+        }
+        
+        //activate explosions
+        Explosion[] explosions = GameObject.FindObjectsByType<Explosion>(FindObjectsSortMode.None);
+        foreach(Explosion explodyThingy in explosions)
+        {
+            if (explodyThingy.transform.parent.gameObject.name == "Rocket")
+            {
+                explodyThingy.Launch();
+            }
         }
 
         //turn off ability to move objects, disable highlight on selected items

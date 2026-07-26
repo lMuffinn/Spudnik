@@ -173,6 +173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragNDrop
   held: 0
+  selected: 0
+  highlight: {fileID: 0}
 --- !u!114 &386721317660216741
 MonoBehaviour:
   m_ObjectHideFlags: 0

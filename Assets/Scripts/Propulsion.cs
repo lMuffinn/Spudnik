@@ -23,11 +23,11 @@ public class Propulsion : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         if (upReference == null)
         {
-            Debug.Log("no preassigned up");
+            //Debug.Log("no preassigned up");
             upReference = transform.GetChild(0).gameObject;
             if (upReference == null)
             {
-                Debug.Log("no children to make up");
+                //Debug.Log("no children to make up");
                 upReference = new GameObject("Up Reference");
                 upReference.transform.SetParent(transform, false);
                 upReference.transform.position = upReference.transform.position + new Vector3(0, 1, 0);

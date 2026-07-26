@@ -87,7 +87,7 @@ public class DragNDrop : MonoBehaviour
                 if (highlight != null) Destroy(highlight.gameObject);
                 highlight = new GameObject();
                 highlight.transform.SetParent(transform);
-                highlight.transform.position = transform.position + new Vector3(0, 0, 1);
+                highlight.transform.position = transform.position + new Vector3(0, 0, .1f);
                 highlight.transform.rotation = transform.rotation;
                 SpriteRenderer highlightSR = highlight.AddComponent<SpriteRenderer>();
                 highlightSR.sprite = spriteRenderer.sprite;
